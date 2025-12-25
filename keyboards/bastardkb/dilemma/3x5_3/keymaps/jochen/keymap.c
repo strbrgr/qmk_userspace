@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
 /**
- * \brief Media layer.
+ * \brief Media layer
  *
  * Tertiary left- and right-hand layer is media and RGB control.  This layer is
  * symmetrical to accomodate the left- and right-hand trackball.
