@@ -169,3 +169,14 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 // clang-format on
 #endif // ENCODER_MAP_ENABLE
+
+#ifdef COMBO_ENABLE
+// Combo definitions
+const uint16_t PROGMEM delete_word_combo[] = {KC_H, KC_COMM, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(delete_word_combo, LCTL(KC_BSPC)),
+};
+
+uint16_t COMBO_LEN = sizeof(key_combos) / sizeof(key_combos[0]);
+#endif // COMBO_ENABLE
