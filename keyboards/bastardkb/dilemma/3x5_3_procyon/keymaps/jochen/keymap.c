@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [LAYER_NAVIGATION] = LAYOUT_split_3x5_3(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, KC_CAPS, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,
+    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX,
     XXXXXXX, KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX,  KC_INS, KC_HOME, KC_PGDN, KC_PGUP,  KC_END,
                       XXXXXXX, XXXXXXX, _______,  KC_ENT, KC_BSPC, KC_DEL
   ),
@@ -173,9 +173,11 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #ifdef COMBO_ENABLE
 // Combo definitions
 const uint16_t PROGMEM delete_word_combo[] = {KC_H, KC_COMM, COMBO_END};
+const uint16_t PROGMEM caps_word_combo[] = {KC_F, KC_U, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(delete_word_combo, LCTL(KC_BSPC)),
+    COMBO(caps_word_combo, CW_TOGG),
 };
 
 uint16_t COMBO_LEN = sizeof(key_combos) / sizeof(key_combos[0]);
