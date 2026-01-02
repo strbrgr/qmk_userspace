@@ -63,7 +63,7 @@ void td_grv_tild(tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
         tap_code(KC_GRV);
     } else if (state->count == 2) {
-        tap_code(KC_TILD);
+        tap_code16(KC_TILD);
     }
 }
 
