@@ -31,7 +31,8 @@ enum dilemma_keymap_layers {
 enum {
     TD_V_WORD_BACK,
     TD_GRV_TILD,
-    TD_MINS_UNDERSCORE
+    TD_MINS_UNDERSCORE,
+    TD_EQL_PLUS,
 };
 
 // Automatically enable sniping-mode on the pointer layer.
