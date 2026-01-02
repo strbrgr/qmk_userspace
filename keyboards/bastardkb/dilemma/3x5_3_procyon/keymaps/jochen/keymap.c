@@ -30,6 +30,7 @@ enum dilemma_keymap_layers {
 
 enum {
     TD_V_WORD_BACK,
+    TD_GRV_TILD,
 };
 
 // Automatically enable sniping-mode on the pointer layer.
@@ -58,8 +59,17 @@ void td_v_word_back(tap_dance_state_t *state, void *user_data) {
     }
 }
 
+void td_grv_tild(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        tap_code(KC_GRV);
+    } else if (state->count == 2) {
+        tap_code(KC_TILD);
+    }
+}
+
 tap_dance_action_t tap_dance_actions[] = {
     [TD_V_WORD_BACK] = ACTION_TAP_DANCE_FN(td_v_word_back),
+    [TD_GRV_TILD] = ACTION_TAP_DANCE_FN(td_grv_tild),
 };
 
 // clang-format off
@@ -156,7 +166,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [LAYER_SYMBOLS] = LAYOUT_split_3x5_3(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_CIRC, KC_PERC, KC_ASTR, KC_AMPR, KC_BSLS,
-    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, KC_GRV,  KC_QUOT, KC_DQUO, KC_EXLM, KC_PLUS,
+    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, TD(TD_GRV_TILD),  KC_QUOT, KC_DQUO, KC_EXLM, KC_PLUS,
     XXXXXXX, KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX, KC_TILD, KC_HASH, KC_AT,   KC_DLR,  KC_PIPE,
                       XXXXXXX, _______, XXXXXXX, KC_MINS, KC_EQL,  KC_UNDS
   ),
