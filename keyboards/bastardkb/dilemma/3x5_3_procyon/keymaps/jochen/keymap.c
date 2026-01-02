@@ -54,11 +54,7 @@ void td_v_word_back(tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
         tap_code(KC_V);
     } else if (state->count == 2) {
-        register_code(KC_LALT);
-        register_code(KC_LCTL);
-        tap_code(KC_LEFT);
-        unregister_code(KC_LCTL);
-        unregister_code(KC_LALT);
+        tap_code16(LALT(LCTL(KC_LEFT)));
     }
 }
 
@@ -197,7 +193,7 @@ const uint16_t PROGMEM caps_word_combo[]   = {KC_F, KC_U, COMBO_END};
 const uint16_t PROGMEM underscore_combo[]  = {KC_P, KC_L, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(delete_word_combo, LCTL(KC_BSPC)),
+    COMBO(delete_word_combo, LALT(KC_BSPC)),
     COMBO(caps_word_combo, CW_TOGG),
     COMBO(underscore_combo, KC_UNDS),
 };
