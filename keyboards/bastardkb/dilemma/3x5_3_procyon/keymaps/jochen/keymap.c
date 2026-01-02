@@ -28,6 +28,10 @@ enum dilemma_keymap_layers {
     LAYER_SYMBOLS,
 };
 
+enum {
+    TD_V_WORD_BACK,
+};
+
 // Automatically enable sniping-mode on the pointer layer.
 // #define DILEMMA_AUTO_SNIPING_ON_LAYER LAYER_POINTER
 
@@ -46,13 +50,29 @@ enum dilemma_keymap_layers {
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
+void td_v_word_back(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        tap_code(KC_V);
+    } else if (state->count == 2) {
+        register_code(KC_LALT);
+        register_code(KC_LCTL);
+        tap_code(KC_LEFT);
+        unregister_code(KC_LCTL);
+        unregister_code(KC_LALT);
+    }
+}
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_V_WORD_BACK] = ACTION_TAP_DANCE_FN(td_v_word_back),
+};
+
 // clang-format off
 /** \brief Colemak-DH layout (3 rows, 10 columns). */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_split_3x5_3(
        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,
        LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G, KC_M, LSFT_T(KC_N), LCTL_T(KC_E), LALT_T(KC_I), LGUI_T(KC_O),
-       PT_Z,    RALT_T(KC_X),    KC_C,    KC_D,    KC_V,    KC_K,    KC_H, KC_COMM,  RALT_T(KC_DOT), PT_SLSH,
+       PT_Z,    RALT_T(KC_X),    KC_C,    KC_D,    TD(TD_V_WORD_BACK),    KC_K,    KC_H, KC_COMM,  RALT_T(KC_DOT), PT_SLSH,
                       ESC_MED, TAB_SYM, SPC_NAV, ENT_FUN, BSP_NUM, KC_MPLY
   ),
 
