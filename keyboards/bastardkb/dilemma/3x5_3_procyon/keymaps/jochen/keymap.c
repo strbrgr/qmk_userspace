@@ -61,22 +61,6 @@ void td_v_word_back(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void td_grv_tild(tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        tap_code(KC_GRV);
-    } else if (state->count == 2) {
-        tap_code16(S(KC_GRV));
-    }
-}
-
-void td_minus_underscore(tap_dance_state_t *state, void *user_data) {
-    if (state->count == 1) {
-        tap_code(KC_MINS);
-    } else if (state->count == 2) {
-        tap_code16(S(KC_MINS));
-    }
-}
-
 void td_equal_plus(tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
         tap_code(KC_EQL);
@@ -186,9 +170,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [LAYER_SYMBOLS] = LAYOUT_split_3x5_3(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_CIRC, KC_PERC, KC_ASTR, KC_AMPR, KC_BSLS,
-    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, TD(TD_GRV_TILD),  KC_QUOT, KC_DQUO, KC_EXLM, TD(TD_EQL_PLUS),
-    XXXXXXX, KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX, TD(TD_MINS_UNDERSCORE), KC_HASH, KC_AT, KC_DLR, KC_PIPE,
-                      XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, KC_GRV,  KC_QUOT, KC_DQUO, KC_EXLM, KC_PLUS,
+    XXXXXXX, KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX, KC_TILD, KC_HASH, KC_AT, KC_DLR, KC_PIPE,
+                      XXXXXXX, _______, XXXXXXX, KC_MINS, KC_EQL, XXXXXXX
   ),
 };
 // clang-format on
@@ -220,12 +204,14 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 // Combo definitions
 const uint16_t PROGMEM delete_word_combo[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM caps_word_combo[]   = {KC_F, KC_U, COMBO_END};
-const uint16_t PROGMEM underscore_combo[]  = {KC_P, KC_L, COMBO_END};
+const uint16_t PROGMEM underscore_combo[]  = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM screenshot_combo[] = {KC_B, KC_J, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(delete_word_combo, LALT(KC_BSPC)),
     COMBO(caps_word_combo, CW_TOGG),
     COMBO(underscore_combo, KC_UNDS),
+    COMBO(screenshot_combo, tap_code16(LSG(KC_4))),
 };
 
 uint16_t COMBO_LEN = sizeof(key_combos) / sizeof(key_combos[0]);
