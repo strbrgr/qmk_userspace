@@ -71,8 +71,6 @@ void td_equal_plus(tap_dance_state_t *state, void *user_data) {
 
 tap_dance_action_t tap_dance_actions[] = {
     [TD_V_WORD_BACK] = ACTION_TAP_DANCE_FN(td_v_word_back),
-    [TD_GRV_TILD] = ACTION_TAP_DANCE_FN(td_grv_tild),
-    [TD_MINS_UNDERSCORE] = ACTION_TAP_DANCE_FN(td_minus_underscore),
     [TD_EQL_PLUS] = ACTION_TAP_DANCE_FN(td_equal_plus),
 };
 
@@ -205,13 +203,13 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 const uint16_t PROGMEM delete_word_combo[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM caps_word_combo[]   = {KC_F, KC_U, COMBO_END};
 const uint16_t PROGMEM underscore_combo[]  = {KC_COMM, KC_DOT, COMBO_END};
-// const uint16_t PROGMEM screenshot_combo[] = {KC_B, KC_J, COMBO_END};
+const uint16_t PROGMEM screenshot_combo[] = {KC_B, KC_J, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(delete_word_combo, LALT(KC_BSPC)),
     COMBO(caps_word_combo, CW_TOGG),
     COMBO(underscore_combo, KC_UNDS),
-    // COMBO(screenshot_combo, tap_code16(LSG(KC_4))),
+    COMBO(screenshot_combo, tap_code16(LSG(KC_4))),
 };
 
 uint16_t COMBO_LEN = sizeof(key_combos) / sizeof(key_combos[0]);
