@@ -209,7 +209,7 @@ combo_t key_combos[] = {
     COMBO(delete_word_combo, LALT(KC_BSPC)),
     COMBO(caps_word_combo, CW_TOGG),
     COMBO(underscore_combo, KC_UNDS),
-    COMBO(screenshot_combo, tap_code16(LSG(KC_4))),
+    COMBO(screenshot_combo, LSG(KC_4)),
 };
 
 uint16_t COMBO_LEN = sizeof(key_combos) / sizeof(key_combos[0]);
