@@ -38,11 +38,11 @@ enum {
 // Automatically enable sniping-mode on the pointer layer.
 // #define DILEMMA_AUTO_SNIPING_ON_LAYER LAYER_POINTER
 
-#define ESC_MED LT(LAYER_MEDIA, KC_ESC)
+#define ESC_SYM LT(LAYER_SYMBOLS, KC_ESC)
 #define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
-#define TAB_SYM LT(LAYER_SYMBOLS, KC_TAB)
+#define TAB_NUM LT(LAYER_NUMERAL, KC_TAB)
 #define ENT_FUN LT(LAYER_FUNCTION, KC_ENT)
-#define BSP_NUM LT(LAYER_NUMERAL, KC_BSPC)
+#define BSP_MED LT(LAYER_MEDIA, KC_BSPC) // This is free
 #define PT_Z LT(LAYER_POINTER, KC_Z)
 #define PT_SLSH LT(LAYER_POINTER, KC_SLSH)
 
@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,
        LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G, KC_M, LSFT_T(KC_N), LCTL_T(KC_E), LALT_T(KC_I), LGUI_T(KC_O),
        PT_Z,    RALT_T(KC_X),    KC_C,    KC_D,    TD(TD_V_WORD_BACK),    KC_K,    KC_H, KC_COMM,  RALT_T(KC_DOT), PT_SLSH,
-                      ESC_MED, TAB_SYM, SPC_NAV, ENT_FUN, BSP_NUM, KC_MPLY
+                      ESC_SYM, SPC_NAV, TAB_NUM, ENT_FUN, BSP_MED, XXXXXXX
   ),
 
 /*
@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, RM_PREV, RM_TOGG, RM_NEXT, XXXXXXX, XXXXXXX, RM_PREV, RM_TOGG, RM_NEXT, XXXXXXX,
     KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT, KC_MPRV, KC_VOLD, KC_MUTE, KC_VOLU, KC_MNXT,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                      _______, KC_MPLY, KC_MSTP, KC_MSTP, KC_MPLY, KC_MUTE
+                      KC_MUTE, KC_MPLY, KC_MSTP, KC_MSTP, _______, KC_MUTE
   ),
 
 /** \brief Mouse emulation and pointer functions. */
@@ -153,10 +153,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `KC_DOT` is duplicated from the base layer.
  */
   [LAYER_NUMERAL] = LAYOUT_split_3x5_3(
-    KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL, XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
-    KC_0,       KC_1,    KC_2,    KC_3, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, KC_RALT, XXXXXXX,
-                      KC_DOT, KC_MINS,   KC_DOT, XXXXXXX, _______, XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC,    KC_7,   KC_8,    KC_9, KC_RBRC,
+    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, KC_MINS,    KC_4,   KC_5,    KC_6,  KC_EQL,
+    XXXXXXX, KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX,    KC_0,    KC_1,   KC_2,    KC_3, KC_DOT,
+                      XXXXXXX, XXXXXXX, _______, KC_COMM, KC_BSPC, XXXXXXX
   ),
 
 /**
