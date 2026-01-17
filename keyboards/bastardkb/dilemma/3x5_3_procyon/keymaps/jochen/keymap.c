@@ -39,8 +39,8 @@ enum {
 // #define DILEMMA_AUTO_SNIPING_ON_LAYER LAYER_POINTER
 
 #define ESC_SYM LT(LAYER_SYMBOLS, KC_ESC)
-#define TAB_NAV LT(LAYER_NAVIGATION, KC_TAB)
-#define SPC_NUM LT(LAYER_NUMERAL, KC_SPC)
+#define SPC_NAV LT(LAYER_NAVIGATION, KC_SPC)
+#define TAB_NUM LT(LAYER_NUMERAL, KC_TAB)
 #define ENT_FUN LT(LAYER_FUNCTION, KC_ENT)
 #define BSP_MED LT(LAYER_MEDIA, KC_BSPC) // This is free
 #define PT_Z LT(LAYER_POINTER, KC_Z)
@@ -71,7 +71,7 @@ void td_equal_plus(tap_dance_state_t *state, void *user_data) {
 
 tap_dance_action_t tap_dance_actions[] = {
     [TD_V_WORD_BACK] = ACTION_TAP_DANCE_FN(td_v_word_back),
-    [TD_EQL_PLUS] = ACTION_TAP_DANCE_FN(td_equal_plus),
+    [TD_EQL_PLUS]    = ACTION_TAP_DANCE_FN(td_equal_plus),
 };
 
 // clang-format off
@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,
        LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G, KC_M, LSFT_T(KC_N), LCTL_T(KC_E), LALT_T(KC_I), LGUI_T(KC_O),
        PT_Z,    RALT_T(KC_X),    KC_C,    KC_D,    TD(TD_V_WORD_BACK),    KC_K,    KC_H, KC_COMM,  RALT_T(KC_DOT), PT_SLSH,
-                      ESC_SYM, SPC_NUM, TAB_NAV, ENT_FUN, BSP_MED, XXXXXXX
+                      ESC_SYM, TAB_NUM, SPC_NAV, ENT_FUN, BSP_MED, XXXXXXX
   ),
 
 /*
@@ -203,7 +203,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 const uint16_t PROGMEM delete_word_combo[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM caps_word_combo[]   = {KC_F, KC_U, COMBO_END};
 const uint16_t PROGMEM underscore_combo[]  = {KC_K, KC_H, COMBO_END};
-const uint16_t PROGMEM screenshot_combo[] = {KC_B, KC_J, COMBO_END};
+const uint16_t PROGMEM screenshot_combo[]  = {KC_B, KC_J, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(delete_word_combo, LALT(KC_BSPC)),
