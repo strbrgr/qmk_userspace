@@ -29,10 +29,8 @@ enum dilemma_keymap_layers {
 };
 
 enum {
-    TD_V_WORD_BACK,
-    TD_GRV_TILD,
+    TD_DISPLAY_LEFT,
     TD_MINS_UNDERSCORE,
-    TD_EQL_PLUS,
 };
 
 // Automatically enable sniping-mode on the pointer layer.
@@ -53,7 +51,7 @@ enum {
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
-void td_v_word_back(tap_dance_state_t *state, void *user_data) {
+void td_display_left(tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
         tap_code(KC_V);
     } else if (state->count == 2) {
@@ -61,17 +59,17 @@ void td_v_word_back(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void td_equal_plus(tap_dance_state_t *state, void *user_data) {
+void td_display_right(tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
-        tap_code(KC_EQL);
+        tap_code(KC_K);
     } else if (state->count == 2) {
-        tap_code16(S(KC_EQL));
+        tap_code16(LALT(LCTL(KC_RIGHT)));
     }
 }
 
 tap_dance_action_t tap_dance_actions[] = {
-    [TD_V_WORD_BACK] = ACTION_TAP_DANCE_FN(td_v_word_back),
-    [TD_EQL_PLUS]    = ACTION_TAP_DANCE_FN(td_equal_plus),
+    [TD_DISPLAY_LEFT]  = ACTION_TAP_DANCE_FN(td_display_left),
+    [TD_DISPLAY_RIGHT] = ACTION_TAP_DANCE_FN(td_display_right),
 };
 
 // clang-format off
@@ -80,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_split_3x5_3(
        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,
        LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G, KC_M, LSFT_T(KC_N), LCTL_T(KC_E), LALT_T(KC_I), LGUI_T(KC_O),
-       PT_Z,    RALT_T(KC_X),    KC_C,    KC_D,    TD(TD_V_WORD_BACK),    KC_K,    KC_H, KC_COMM,  RALT_T(KC_DOT), PT_SLSH,
+       PT_Z,    RALT_T(KC_X),    KC_C,    KC_D,    TD(TD_DISPLAY_LEFT),    TD(TD_DISPLAY_RIGHT),    KC_H, KC_COMM,  RALT_T(KC_DOT), PT_SLSH,
                       ESC_SYM, TAB_NUM, SPC_NAV, ENT_FUN, BSP_MED, XXXXXXX
   ),
 
