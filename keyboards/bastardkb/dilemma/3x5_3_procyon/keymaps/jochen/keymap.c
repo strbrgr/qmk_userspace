@@ -200,9 +200,9 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 // Combo definitions
 const uint16_t PROGMEM delete_word_combo[] = {KC_H, KC_COMM, COMBO_END};
 const uint16_t PROGMEM caps_word_combo[]   = {KC_F, KC_U, COMBO_END};
-const uint16_t PROGMEM underscore_combo[]  = {KC_K, KC_H, COMBO_END};
+const uint16_t PROGMEM underscore_combo[]  = {TD(TD_DISPLAY_RIGHT), KC_H, COMBO_END};
 const uint16_t PROGMEM screenshot_combo[]  = {KC_B, KC_J, COMBO_END};
-const uint16_t PROGMEM full_window_combo[] = {KC_V, KC_K, COMBO_END};
+const uint16_t PROGMEM full_window_combo[] = {TD(TD_DISPLAY_LEFT), TD(TD_DISPLAY_RIGHT), COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(delete_word_combo, LALT(KC_BSPC)), COMBO(caps_word_combo, CW_TOGG), COMBO(underscore_combo, KC_UNDS), COMBO(screenshot_combo, LSG(KC_4)), COMBO(full_window_combo, LCA(KC_ENTER)),
