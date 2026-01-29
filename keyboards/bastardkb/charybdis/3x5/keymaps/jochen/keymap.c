@@ -64,6 +64,27 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
+void td_display_left(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        tap_code(KC_V);
+    } else if (state->count == 2) {
+        tap_code16(LALT(LCTL(KC_LEFT)));
+    }
+}
+
+void td_display_right(tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        tap_code(KC_K);
+    } else if (state->count == 2) {
+        tap_code16(LALT(LCTL(KC_RIGHT)));
+    }
+}
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_DISPLAY_LEFT]  = ACTION_TAP_DANCE_FN(td_display_left),
+    [TD_DISPLAY_RIGHT] = ACTION_TAP_DANCE_FN(td_display_right),
+};
+
 // clang-format off
 /** \brief QWERTY layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
