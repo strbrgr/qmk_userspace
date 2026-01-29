@@ -49,15 +49,15 @@ bool combos_on         = true; // use combo feature by default
 #define USR_CUT S(KC_DEL)
 #define USR_UND KC_UNDO
 
-#define MS_L KC_MS_LEFT
-#define MS_R KC_MS_RIGHT
-#define MS_D KC_MS_DOWN
-#define MS_U KC_MS_UP
+#define MS_L MS_LEFT
+#define MS_R MS_RGHT
+#define MS_D MS_DOWN
+#define MS_U MS_UP
 
-#define WH_L KC_MS_WH_LEFT
-#define WH_R KC_MS_WH_RIGHT
-#define WH_D KC_MS_WH_DOWN
-#define WH_U KC_MS_WH_UP
+#define WH_L MS_WHLL
+#define WH_R MS_WHLR
+#define WH_D MS_WHLD
+#define WH_U MS_WHLU
 
 /** Base layer with BÉPO layout. */
 #define LAYOUT_LAYER_BASE KC_Q, KC_W, KC_F, KC_P, KC_B, KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_A, KC_R, KC_S, KC_T, KC_G, KC_M, KC_N, KC_E, KC_I, KC_O, KC_Z, KC_X, KC_C, D_NUM, KC_V, KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH, ESC_SYM, SPC_NAV, KC_TAB, ENT_MBO, BSP_FUN
@@ -76,16 +76,16 @@ bool combos_on         = true; // use combo feature by default
 /** Layers. */
 
 // Buttons.
-#define LAYOUT_LAYER_MBO __________________RESET_L__________________, USR_RDO, USR_PST, USR_CPY, USR_CUT, USR_UND, ______________HOME_ROW_GASC_L______________, KC_CAPS, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_BTN3, KC_ALGR, KC_BTN2, KC_BTN1, U_NA, KC_INS, KC_HOME, KC_PGDN, KC_PGUP, KC_END, U_NA, U_NA, U_NA, KC_ENT, KC_DEL
+#define LAYOUT_LAYER_MBO __________________RESET_L__________________, USR_RDO, USR_PST, USR_CPY, USR_CUT, USR_UND, ______________HOME_ROW_GASC_L______________, KC_CAPS, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, MS_BTN3, KC_ALGR, MS_BTN2, MS_BTN1, U_NA, KC_INS, KC_HOME, KC_PGDN, KC_PGUP, KC_END, U_NA, U_NA, U_NA, KC_ENT, KC_DEL
 
 // Media.
-#define LAYOUT_LAYER_MEDIA __________________RESET_L__________________, USR_RDO, USR_PST, USR_CPY, USR_CUT, USR_UND, ______________HOME_ROW_GASC_L______________, U_NU, MS_L, MS_D, MS_U, MS_R, ______________HOME_ROW_ALGR_L______________, U_NU, WH_L, WH_D, WH_U, WH_R, U_NA, U_NA, U_NA, KC_BTN1, KC_BTN3
+#define LAYOUT_LAYER_MEDIA __________________RESET_L__________________, USR_RDO, USR_PST, USR_CPY, USR_CUT, USR_UND, ______________HOME_ROW_GASC_L______________, U_NU, MS_L, MS_D, MS_U, MS_R, ______________HOME_ROW_ALGR_L______________, U_NU, WH_L, WH_D, WH_U, WH_R, U_NA, U_NA, U_NA, MS_BTN1, MS_BTN3
 
 // Navigation.
 #define LAYOUT_LAYER_NAV __________________RESET_L__________________, XXXXXXX, KC_LPRN, KC_RPRN, KC_LCBR, KC_RCBR, ______________HOME_ROW_GASC_L______________, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, XXXXXXX, ______________HOME_ROW_ALGR_L______________, U_NU, KC_LBRC, KC_RBRC, KC_GT, KC_LT, U_NA, U_NA, U_NA, U_NA, U_NA
 
 // Mouse.
-#define LAYOUT_LAYER_MOUSE DPI_MOD, S_D_MOD, USR_CPY, USR_CUT, USR_UND, USR_RDO, USR_PST, USR_CPY, USR_CUT, USR_UND, ______________HOME_ROW_GASC_L______________, U_NU, U_NU, U_NU, U_NU, U_NU, USR_RDO, DRGSCRL, USR_CPY, USR_CUT, USR_UND, U_NU, WH_L, WH_D, WH_U, WH_R, KC_BTN2, KC_BTN1, KC_BTN3, KC_BTN1, KC_BTN3
+#define LAYOUT_LAYER_MOUSE DPI_MOD, S_D_MOD, USR_CPY, USR_CUT, USR_UND, USR_RDO, USR_PST, USR_CPY, USR_CUT, USR_UND, ______________HOME_ROW_GASC_L______________, U_NU, U_NU, U_NU, U_NU, U_NU, USR_RDO, DRGSCRL, USR_CPY, USR_CUT, USR_UND, U_NU, WH_L, WH_D, WH_U, WH_R, MS_BTN2, MS_BTN1, MS_BTN3, MS_BTN1, MS_BTN3
 
 // Symbols.
 #define LAYOUT_LAYER_SYM __________________RESET_L__________________, KC_CIRC, KC_PERC, KC_ASTR, KC_AMPR, KC_BSLS, ______________HOME_ROW_GASC_L______________, KC_GRV, KC_QUOT, KC_DQUO, KC_EXLM, KC_PLUS, ______________HOME_ROW_ALGR_L______________, KC_TILD, KC_HASH, KC_AT, KC_DLR, KC_PIPE, U_NA, U_NA, U_NA, KC_MINS, KC_EQL
@@ -132,7 +132,7 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
 void rgb_matrix_update_pwm_buffers(void);
 #endif
 
-void shutdown_user(void) {
+bool shutdown_user(bool jump_to_bootloader) {
 #ifdef RGBLIGHT_ENABLE
     rgblight_enable_noeeprom();
     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
@@ -142,6 +142,7 @@ void shutdown_user(void) {
     rgb_matrix_set_color_all(RGB_RED);
     rgb_matrix_update_pwm_buffers();
 #endif // RGB_MATRIX_ENABLE
+    return true;
 }
 
 // combos don't forget to edit COMBO_COUNT in config.h
