@@ -89,8 +89,8 @@ tap_dance_action_t tap_dance_actions[] = {
 /** \brief QWERTY layout (3 rows, 10 columns). */
 #define LAYOUT_LAYER_BASE                                                                     \
        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, \
-       KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I, KC_O, \
-       KC_Z,    KC_X,    KC_C,    TD(TD_DISPLAY_LEFT),    TD(TD_DISPLAY_RIGHT),    KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH, \
+       KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O, \
+       KC_Z,    KC_X,    KC_C,    KC_D,    TD(TD_DISPLAY_LEFT),    TD(TD_DISPLAY_RIGHT),    KC_H, KC_COMM,  KC_DOT, KC_SLSH, \
                       ESC_SYM, TAB_NUM, SPC_NAV, ENT_FUN, BSP_MED
 
 /** Convenience row shorthands. */
