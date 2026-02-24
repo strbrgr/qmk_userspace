@@ -91,7 +91,7 @@ tap_dance_action_t tap_dance_actions[] = {
        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, \
        KC_A,    KC_R,    KC_S,    KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    KC_O, \
        KC_Z,    KC_X,    KC_C,    KC_D,    TD(TD_DISPLAY_LEFT),    TD(TD_DISPLAY_RIGHT),    KC_H, KC_COMM,  KC_DOT, KC_SLSH, \
-                      ESC_SYM, TAB_NUM, SPC_NAV, ENT_FUN, BSP_MED
+                      ESC_SYM, SPC_NAV, TAB_NUM, ENT_FUN, BSP_MED
 
 /** Convenience row shorthands. */
 #define _______________DEAD_HALF_ROW_______________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
